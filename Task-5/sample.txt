@@ -1,1 +1,10 @@
 This is the sample file
+Second commit content
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+
+>>>>>>> 03a1f79 (Fourth commit)
+=======
+Third commit content are added
+>>>>>>> 4076165 (Third commit)
