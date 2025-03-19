@@ -1,0 +1,23 @@
+#!/bin/bash
+
+echo "🔍 Running ESLint before committing..."
+
+ESLINT_CONFIG="/Users/muthukaruppan/Desktop/Git/Task-8/eslint.config.js"
+# Get all staged JavaScript filesnpx eslint --config "$ESLINT_CONFIG" $STAGED_FILES
+STAGED_FILES=$(git diff --cached --name-only --diff-filter=ACM | grep '\.js$')
+
+if [ -z "$STAGED_FILES" ]; then
+  echo "✅ No JavaScript files to lint."
+  exit 0
+fi
+
+npx eslint --config "$ESLINT_CONFIG" $STAGED_FILES
+
+if [ $? -ne 0 ]; then
+  echo "❌ Linting errors found! Aborting commit."
+  exit 1
+fi
+
+echo "✅ ESLint passed. Proceeding with commit..."
+exit 0
+
